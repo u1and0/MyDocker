@@ -17,3 +17,5 @@ RUN visudo -c
 USER $USERNAME
 WORKDIR /home/$USERNAME
 
+CMD ["/usr/bin/fish"]
+
