@@ -11,7 +11,6 @@ RUN useradd -m -d /home/$USERNAME -s /usr/bin/$USERSHELL -g users -G users,wheel
 
 # Normal user treat as root user.
 RUN sed -i -e 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
-RUN visudo -c
 
 # Change user
 USER $USERNAME
