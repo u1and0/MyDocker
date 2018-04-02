@@ -7,12 +7,11 @@ RUN pacman -Syu --noconfirm reflector
 RUN cp /etc/pacman.d/mirrorlist{,.bac}
 RUN reflector --verbose --country 'Japan' -l 10 --sort rate --save /etc/pacman.d/mirrorlist
 
-# Install FISH
-RUN pacman -Syu --noconfirm $USERSHELL sudo
+RUN pacman -Syu --noconfirm sudo
 
 # Create user `docker`, switch to user and set directory to their home.
 ARG USERNAME="docker"
-RUN useradd -m -d /home/$USERNAME -s /usr/bin/$USERSHELL -g users -G users,wheel $USERNAME
+RUN useradd -m -d /home/$USERNAME  -g users -G users,wheel $USERNAME
 
 # Normal user treat as root user.
 RUN sed -i -e 's/# %wheel ALL=(ALL) NOPASSWD: ALL/%wheel ALL=(ALL) NOPASSWD: ALL/' /etc/sudoers
