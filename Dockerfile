@@ -8,6 +8,7 @@ RUN cp /etc/pacman.d/mirrorlist{,.bac}
 RUN reflector --verbose --country 'Japan' -l 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 RUN pacman -Syu --noconfirm sudo git openssh
+RUN pacman -Syu --noconfirm vi zsh
 
 # Create user `docker`, switch to user and set directory to their home.
 ARG USERNAME="docker"
